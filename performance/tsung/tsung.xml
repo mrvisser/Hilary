@@ -7,21 +7,21 @@
   </clients>
   
   <servers>
-    <server host="localhost" port="2001" type="tcp"/>
+    <server host="t1.oae-performance.sakaiproject.org" port="80" type="tcp"/>
   </servers>
 
   <load>
-    <arrivalphase phase="1" duration="1" unit="minute">
-      <users arrivalrate="8" unit="second"/>
-    </arrivalphase>
-    <arrivalphase phase="2" duration="2" unit="minute">
-      <users arrivalrate="16" unit="second"/>
-    </arrivalphase>
-    <arrivalphase phase="3" duration="2" unit="minute">
+    <arrivalphase phase="1" duration="2" unit="minute">
       <users arrivalrate="24" unit="second"/>
     </arrivalphase>
+    <arrivalphase phase="2" duration="2" unit="minute">
+      <users arrivalrate="26" unit="second"/>
+    </arrivalphase>
+    <arrivalphase phase="3" duration="2" unit="minute">
+      <users arrivalrate="28" unit="second"/>
+    </arrivalphase>
     <arrivalphase phase="4" duration="2" unit="minute">
-      <users arrivalrate="32" unit="second"/>
+      <users arrivalrate="30" unit="second"/>
     </arrivalphase>
   </load>
 
@@ -56,14 +56,24 @@
           <http url="/api/auth/login" method="POST" version="1.1" contents="username=%%_users_username%%&amp;password=%%_users_pw%%"/>
         </request>
       </transaction>
-      
+      <transaction name="tx_me">
+        <request>
+          <http url="/api/me" method="GET" version="1.1"></http>
+        </request>
+      </transaction>
+            
       <transaction name="tx_think">
         <thinktime value="3" random="true" />
       </transaction>
       
       <transaction name="tx_view_profile">
         <request subst="true">
-          <http url="/api/users/%%_dyn_userid%%/profile" method="GET" version="1.1"></http>
+          <http url="/api/user/%%_dyn_userid%%/profile" method="GET" version="1.1"></http>
+        </request>
+      </transaction>
+      <transaction name="tx_me">
+        <request>
+          <http url="/api/me" method="GET" version="1.1"></http>
         </request>
       </transaction>
       
@@ -73,11 +83,16 @@
       
       <transaction name="tx_update_profile">
         <request subst="true">
-          <http url="/api/users/%%_dyn_userid%%/profile" method="POST" version="1.1"
+          <http url="/api/user/%%_dyn_userid%%/profile" method="POST" version="1.1"
               contents="section=%%_rnd_short_str%%&amp;data=%7B%22%%_rnd_short_str%%%22%3A%22%%_rnd_long_str%%%22%7D"></http>
         </request>
         <request subst="true">
-          <http url="/api/users/%%_dyn_userid%%/profile" method="GET" version="1.1"></http>
+          <http url="/api/user/%%_dyn_userid%%/profile" method="GET" version="1.1"></http>
+        </request>
+      </transaction>
+      <transaction name="tx_me">
+        <request>
+          <http url="/api/me" method="GET" version="1.1"></http>
         </request>
       </transaction>
       
@@ -88,6 +103,11 @@
       <transaction name="tx_logout">      
         <request>
           <http url="/api/auth/logout" method="POST" version="1.1"/>
+        </request>
+      </transaction>
+      <transaction name="tx_me">
+        <request>
+          <http url="/api/me" method="GET" version="1.1"></http>
         </request>
       </transaction>
       
