@@ -24,7 +24,7 @@
     "amqp": "latest",
     "awssum": "latest",
     "bunyan": "latest",
-    "canvas": "latest",
+    "canvas": "git+http://github.com/sakaiproject/node-canvas.git#joyent-compat",
     "clone": "latest",
     "connect": "latest",
     "connect-redis": "latest",
