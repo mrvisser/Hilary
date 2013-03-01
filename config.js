@@ -139,6 +139,7 @@ config.telemetry = {
  * @param  {Object}    index.settings           Holds the elastic search index configuration settings, as per http://www.elasticsearch.org/guide/reference/api/admin-indices-create-index.html
  * @param  {Boolean}   [index.destroyOnStartup] Whether or not the index should be destroyed when the server starts up. Do not enable this on a production server. Defaults to `false`.
  * @param  {Boolean}   [processIndexJobs]       Whether or not this node should act as an indexer. Only disable this if you have another dedicated set of machines performing index processing. Defaults to `true`.
+ * @param  {Number}    [maxConcurrentIndexers]  The maximum number of concurrent indexing jobs an indexer can handle. Default: 3
  */
 config.search = {
     'hosts': [
@@ -172,7 +173,8 @@ config.search = {
         },
         'destroyOnStartup': false
     },
-    'processIndexJobs': true
+    'processIndexJobs': true,
+    'maxConcurrentIndexers': 3
 };
 
 /**
