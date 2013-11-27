@@ -49,8 +49,26 @@ make
 make install
 
 ##
+# TTF AutoHint
+##
+
+# Deps
+apt-get install -y libfreetype6 libfreetype6-dev qt-sdk
+
+cd /usr/src
+wget http://downloads.sourceforge.net/project/freetype/ttfautohint/0.97/ttfautohint-0.97.tar.gz
+tar -zxvf ttfautohint-0.97.tar.gz
+cd ttfautohint-0.97
+./configure --prefix=$P2H_PREFIX
+make
+make install
+
+##
 # pdf2htmlEX
 ##
+
+# Deps
+apt-get install -u libcairo2 libcairo2-dev
 
 export PKG_CONFIG_PATH=$P2H_PREFIX/lib/pkgconfig
 export LIBRARY_PATH=$P2H_PREFIX/lib
@@ -63,7 +81,7 @@ cd /usr/src
 wget https://github.com/coolwanglu/pdf2htmlEX/archive/v0.10.tar.gz
 tar -zxvf v0.10.tar.gz
 cd pdf2htmlEX-0.10
-cmake -DCMAKE_INSTALL_PREFIX:PATH=$P2H_PREFIX .
+cmake -DENABLE_SVG=ON -DCMAKE_INSTALL_PREFIX:PATH=$P2H_PREFIX .
 make
 make install
 
