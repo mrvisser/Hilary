@@ -17,7 +17,7 @@ var _ = require('underscore');
 
 var unadoptedTenancies = require('./unadoptedTenancyList');
 
-var keysToClear = [
+var simpleKeysToClear = [
     "oae-tenants/block_1/bgColor",
     "oae-tenants/block_1/horizontalAlign",
     "oae-tenants/block_1/icon",
@@ -26,7 +26,6 @@ var keysToClear = [
     "oae-tenants/block_1/md",
     "oae-tenants/block_1/minHeight",
     "oae-tenants/block_1/sm",
-    "oae-tenants/block_1/text/default",
     "oae-tenants/block_1/textColor",
     "oae-tenants/block_1/titleColor",
     "oae-tenants/block_1/type",
@@ -42,7 +41,6 @@ var keysToClear = [
     "oae-tenants/block_10/md",
     "oae-tenants/block_10/minHeight",
     "oae-tenants/block_10/sm",
-    "oae-tenants/block_10/text/default",
     "oae-tenants/block_10/textColor",
     "oae-tenants/block_10/titleColor",
     "oae-tenants/block_10/type",
@@ -58,7 +56,6 @@ var keysToClear = [
     "oae-tenants/block_11/md",
     "oae-tenants/block_11/minHeight",
     "oae-tenants/block_11/sm",
-    "oae-tenants/block_11/text/default",
     "oae-tenants/block_11/textColor",
     "oae-tenants/block_11/titleColor",
     "oae-tenants/block_11/type",
@@ -74,7 +71,6 @@ var keysToClear = [
     "oae-tenants/block_12/md",
     "oae-tenants/block_12/minHeight",
     "oae-tenants/block_12/sm",
-    "oae-tenants/block_12/text/default",
     "oae-tenants/block_12/textColor",
     "oae-tenants/block_12/titleColor",
     "oae-tenants/block_12/type",
@@ -90,7 +86,6 @@ var keysToClear = [
     "oae-tenants/block_2/md",
     "oae-tenants/block_2/minHeight",
     "oae-tenants/block_2/sm",
-    "oae-tenants/block_2/text/default",
     "oae-tenants/block_2/textColor",
     "oae-tenants/block_2/titleColor",
     "oae-tenants/block_2/type",
@@ -106,7 +101,6 @@ var keysToClear = [
     "oae-tenants/block_3/md",
     "oae-tenants/block_3/minHeight",
     "oae-tenants/block_3/sm",
-    "oae-tenants/block_3/text/default",
     "oae-tenants/block_3/textColor",
     "oae-tenants/block_3/titleColor",
     "oae-tenants/block_3/type",
@@ -122,7 +116,6 @@ var keysToClear = [
     "oae-tenants/block_4/md",
     "oae-tenants/block_4/minHeight",
     "oae-tenants/block_4/sm",
-    "oae-tenants/block_4/text/default",
     "oae-tenants/block_4/textColor",
     "oae-tenants/block_4/titleColor",
     "oae-tenants/block_4/type",
@@ -138,7 +131,6 @@ var keysToClear = [
     "oae-tenants/block_5/md",
     "oae-tenants/block_5/minHeight",
     "oae-tenants/block_5/sm",
-    "oae-tenants/block_5/text/default",
     "oae-tenants/block_5/textColor",
     "oae-tenants/block_5/titleColor",
     "oae-tenants/block_5/type",
@@ -154,7 +146,6 @@ var keysToClear = [
     "oae-tenants/block_6/md",
     "oae-tenants/block_6/minHeight",
     "oae-tenants/block_6/sm",
-    "oae-tenants/block_6/text/default",
     "oae-tenants/block_6/textColor",
     "oae-tenants/block_6/titleColor",
     "oae-tenants/block_6/type",
@@ -170,7 +161,6 @@ var keysToClear = [
     "oae-tenants/block_7/md",
     "oae-tenants/block_7/minHeight",
     "oae-tenants/block_7/sm",
-    "oae-tenants/block_7/text/default",
     "oae-tenants/block_7/textColor",
     "oae-tenants/block_7/titleColor",
     "oae-tenants/block_7/type",
@@ -186,7 +176,6 @@ var keysToClear = [
     "oae-tenants/block_8/md",
     "oae-tenants/block_8/minHeight",
     "oae-tenants/block_8/sm",
-    "oae-tenants/block_8/text/default",
     "oae-tenants/block_8/textColor",
     "oae-tenants/block_8/titleColor",
     "oae-tenants/block_8/type",
@@ -202,7 +191,6 @@ var keysToClear = [
     "oae-tenants/block_9/md",
     "oae-tenants/block_9/minHeight",
     "oae-tenants/block_9/sm",
-    "oae-tenants/block_9/text/default",
     "oae-tenants/block_9/textColor",
     "oae-tenants/block_9/titleColor",
     "oae-tenants/block_9/type",
@@ -212,11 +200,43 @@ var keysToClear = [
     "oae-tenants/block_9/xs"
 ];
 
-var clearData = {'configFields': keysToClear};
+var textKeysToClear = [
+  "oae-tenants/block_1/text",
+  "oae-tenants/block_2/text",
+  "oae-tenants/block_3/text",
+  "oae-tenants/block_4/text",
+  "oae-tenants/block_5/text",
+  "oae-tenants/block_6/text",
+  "oae-tenants/block_7/text",
+  "oae-tenants/block_8/text",
+  "oae-tenants/block_9/text",
+  "oae-tenants/block_10/text",
+  "oae-tenants/block_11/text",
+  "oae-tenants/block_12/text",
+];
 
-console.log('var clearData = %s;', JSON.stringify(clearData, null, 2));
+var clearDataSimple = {'configFields': simpleKeysToClear};
+var clearDataText = {'configFields': textKeysToClear};
+
+console.log('var clearDataSimple = %s;', JSON.stringify(clearDataSimple, null, 2));
+console.log('var clearDataText = %s;', JSON.stringify(clearDataText, null, 2));
 console.log('var tenantsToUpdate = %s;', JSON.stringify(unadoptedTenancies, null, 2));
-console.log('var concurrency = 1;');
+
+console.log(function _clearTenantConfig(tenantAlias, data, callback) {
+    $.ajax({
+        'type': 'POST',
+        'url': '/api/config/' + tenantAlias + '/clear',
+        'data': data,
+        'error': function(jqXhr, textStatus) {
+            console.log('error: %s / %s', tenantAlias, textStatus);
+            return callback(true);
+        },
+        'success': function() {
+            return callback();
+        }
+    });
+}.toString());
+
 console.log(function _clearTenantConfigs() {
     if (tenantsToUpdate.length === 0) {
         return;
@@ -224,17 +244,15 @@ console.log(function _clearTenantConfigs() {
 
     var tenantAlias = tenantsToUpdate.shift();
     console.log('clearing: %s', tenantAlias);
-    $.ajax({
-        'type': 'POST',
-        'url': '/api/config/' + tenantAlias + '/clear',
-        'data': clearData,
-        'error': function(jqXhr, textStatus) {
-            console.log('error: %s / %s', tenantAlias, textStatus);
-        },
-        'complete': function() {
-            _clearTenantConfigs();
+    _clearTenantConfig(tenantAlias, clearDataSimple, function(err) {
+        if (err) {
+            return _clearTenantConfigs();
         }
+
+        _clearTenantConfig(tenantAlias, clearDataText, function() {
+            return _clearTenantConfigs();
+        });
     });
 }.toString());
 
-console.log('for (var i = 0; i < concurrency; i++) { _clearTenantConfigs(); }');
+console.log('_clearTenantConfigs();');
