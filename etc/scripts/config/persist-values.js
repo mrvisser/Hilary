@@ -25,6 +25,7 @@ var adoptedTenantAliases = require('./adoptedTenancyList');
 var configKeysToPersist = [
     'oae-authentication/local/enabled',
     'oae-authentication/local/allowAccountCreation',
+    'oae-email/general/fromName',
     'oae-tenants/block_2/lg',
     'oae-tenants/block_2/md',
     'oae-tenants/block_2/minHeight',
@@ -112,6 +113,9 @@ function _getConfigUpdatesByTenantAlias(restContext, adoptedTenantAliases, callb
             })
             .object()
             .value();
+
+        var fromNameKey = 'oae-email/general/fromName';
+        updates[fromNameKey] = updates[fromNameKey] || '${tenant}';
 
         console.log('$.post("/api/config/%s", %s);', tenantAlias, JSON.stringify(updates, null, 2));
 

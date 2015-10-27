@@ -6,7 +6,7 @@ $.post('/api/config/admin', {
     "oae-content/visibility/links": "private",
     "oae-discussions/visibility/discussion": "private",
     "oae-email/general/fromAddress": "",
-    "oae-email/general/fromName": "*Unity",
+    "oae-email/general/fromName": "*Unity for ${tenant}",
     "oae-principals/group/visibility": "private",
     "oae-principals/termsAndConditions/enabled": "true",
     "oae-principals/user/emailPreference": "immediate",
